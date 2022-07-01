@@ -2,7 +2,8 @@
 
 output "group_id" {
   description = "Group ocid"
-  value = var.group_create ? element(concat(oci_identity_group.this.*.id, list("")), 0) : lookup(local.group_ids[0], "id")
+  value = var.group_create ? element(concat(oci_identity_group.this.*.id, [""]), 0) : lookup(local.group_ids[0], "id")
+#  value = var.group_create ? element(concat(oci_identity_group.this.*.id, [""]), 0) : lookup(local.compartment_ids[0], "id")
 }
 
 output "group_name" {
